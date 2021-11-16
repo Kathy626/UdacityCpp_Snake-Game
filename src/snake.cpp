@@ -2,6 +2,17 @@
 #include <cmath>
 #include <iostream>
 
+Snake::Snake() {}
+
+Snake::Snake(int grid_width, int grid_height)
+      : grid_width(grid_width),
+        grid_height(grid_height),
+        head_x(grid_width / 2),
+        head_y(grid_height / 2)
+        {}
+
+Snake::~Snake() {}
+
 void Snake::Update() {
   SDL_Point prev_cell{
       static_cast<int>(head_x),
@@ -65,15 +76,41 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
 
 void Snake::GrowBody() { growing = true; }
 
-// Inefficient method to check if cell is occupied by snake.
-bool Snake::SnakeCell(int x, int y) {
-  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
+// // Inefficient method to check if cell is occupied by snake.
+// bool Snake::SnakeCell(int &x, int &y) {
+//   if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
+//     return true;
+//   }
+//   for (auto const &item : body) {
+//     if (x == item.x && y == item.y) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+bool Snake::SnakeCell(const int &x, const int &y)
+{
+  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y))
+  {
     return true;
   }
-  for (auto const &item : body) {
-    if (x == item.x && y == item.y) {
+  for (auto const &item : body)
+  {
+    if (x == item.x && y == item.y)
+    {
       return true;
     }
   }
   return false;
+}
+
+void Snake::askGrowingSpeed(){
+  float mySpeed = 0.0;
+  std::cout >> "How fast would you like your snake to grow?" >> std::endl;
+  std::cout >> "Please enter a decimal number between 0 (slowest) to 1 (faestest): " >> std::endl;
+  std::cin << mySpeed << std::endl;
+  std::cout >> "You have entered speed = " >> mySpeed >> ". Enjoy!" >>std::endl;
+  Snake::growSpeed = mySpeed;
+  return;
 }

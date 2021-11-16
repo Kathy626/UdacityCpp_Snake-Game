@@ -6,21 +6,15 @@
 
 class Snake {
  public:
+ // constructor & desctructor
+  Snake();
+  Snake(int grid_width, int grid_height);
+  ~Snake();
+
   enum class Direction { kUp, kDown, kLeft, kRight };
-
-  Snake(int grid_width, int grid_height)
-      : grid_width(grid_width),
-        grid_height(grid_height),
-        head_x(grid_width / 2),
-        head_y(grid_height / 2) {}
-
-  void Update();
-
-  void GrowBody();
-  bool SnakeCell(int x, int y);
-
   Direction direction = Direction::kUp;
 
+  // member
   float speed{0.1f};
   int size{1};
   bool alive{true};
@@ -28,7 +22,16 @@ class Snake {
   float head_y;
   std::vector<SDL_Point> body;
 
+  /* OOP 1.2: Update() and GrowBody() called in game.cpp, so move to public*/
+  void Update();
+  void GrowBody();
+
+  // new: get growing speed
+  float growSpeed{0.02f};
+  void askGrowingSpeed();
+
  private:
+  bool SnakeCell(const int &x, const int &y);
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 
