@@ -22,6 +22,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   int frame_count = 0;
   bool running = true;
 
+  snake.askGrowingSpeed();   // Newly Added
+
   while (running) {
     frame_start = SDL_GetTicks();
 

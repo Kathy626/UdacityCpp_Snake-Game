@@ -107,10 +107,10 @@ bool Snake::SnakeCell(const int &x, const int &y)
 
 void Snake::askGrowingSpeed(){
   float mySpeed = 0.0;
-  std::cout >> "How fast would you like your snake to grow?" >> std::endl;
-  std::cout >> "Please enter a decimal number between 0 (slowest) to 1 (faestest): " >> std::endl;
-  std::cin << mySpeed << std::endl;
-  std::cout >> "You have entered speed = " >> mySpeed >> ". Enjoy!" >>std::endl;
+  std::cout << "How fast would you like your snake to grow?" << std::endl;
+  std::cout << "Please enter a decimal number between 0 (slowest) to 1 (faestest): " << std::endl;
+  std::cin >> mySpeed;
+  std::cout << "You have entered speed = " << mySpeed << ". Enjoy!"  << std::endl;
   Snake::growSpeed = mySpeed;
   return;
 }

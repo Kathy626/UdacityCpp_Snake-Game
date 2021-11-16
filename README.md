@@ -3,15 +3,17 @@
 
 ## Code Criterion
 1. Loops, Function and I&O
+
 #1.1 (Task 1)
   Spec: The project demonstrates an understanding of C++ functions and control structures
-  ---> Snake::askGrowingSpeed() this function
+  ---> Snake::askGrowingSpeed() this function, which called in game::run
 
 #1.3 (Task 2)
   The project accepts user input and processes the input.
-  ---> Snake::askGrowingSpeed ask user decide their snake growing speed
+  ---> Snake::askGrowingSpeed ask user enter their snake growing speed, and this speed to growing snake during the game
 
 2. OOP
+
 #2.1 (Task 3)
   The project uses Object Oriented Programming techniques.
   ---> refatored Snake, Game these two classes for OOP
@@ -22,6 +24,8 @@
        moved below two functions into public
        void Update();
        void GrowBody();
+       bool SnakeCell(const int &x, const int &y);
+
 
 #2.3 (Task 5)
   Class constructors utilize member initialization lists.
@@ -29,6 +33,7 @@
 
   
 3. Memory Management
+
 #3.1 (Task 6)
   The project makes use of references in function declarations.
   At least two variables are defined as references, or two functions use pass-by-reference in the project code.
@@ -47,4 +52,5 @@ NO
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
-
+5. Enter snake growing speed in terminal console
+6. Play && Enjoy!

@@ -25,13 +25,13 @@ class Snake {
   /* OOP 1.2: Update() and GrowBody() called in game.cpp, so move to public*/
   void Update();
   void GrowBody();
+  bool SnakeCell(const int &x, const int &y);
 
   // new: get growing speed
   float growSpeed{0.02f};
   void askGrowingSpeed();
 
  private:
-  bool SnakeCell(const int &x, const int &y);
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 
