@@ -6,6 +6,7 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "snakeFoods.h"// newly added to define different type of foods
 
 class Game {
  public:
@@ -23,7 +24,9 @@ class Game {
   int score{0};
 
   Snake snake;
-  SDL_Point food;
+  
+  //SDL_Point food;
+  SnakeFoods f = DefFood(0,0);
   
   std::random_device dev;
   std::mt19937 engine;

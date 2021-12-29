@@ -4,12 +4,17 @@
 
 Snake::Snake() {}
 
-Snake::Snake(int grid_width, int grid_height)
+Snake::Snake(const int& grid_width, const int& grid_height, int&& num)
       : grid_width(grid_width),
         grid_height(grid_height),
-        head_x(grid_width / 2),
-        head_y(grid_height / 2)
-        {}
+        head_x(grid_width),
+        head_y(grid_height * 0.75f)
+        {
+          if (num == 0)
+            head_x = grid_width * 0.25;
+          else
+            head_x = grid_width * 0.75;           
+        }
 
 Snake::~Snake() {}
 
@@ -76,19 +81,6 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
 
 void Snake::GrowBody() { growing = true; }
 
-// // Inefficient method to check if cell is occupied by snake.
-// bool Snake::SnakeCell(int &x, int &y) {
-//   if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
-//     return true;
-//   }
-//   for (auto const &item : body) {
-//     if (x == item.x && y == item.y) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
 bool Snake::SnakeCell(const int &x, const int &y)
 {
   if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y))
@@ -105,6 +97,8 @@ bool Snake::SnakeCell(const int &x, const int &y)
   return false;
 }
 
+/* below are all newly added functions */
+
 void Snake::askGrowingSpeed(){
   float mySpeed = 0.0;
   std::cout << "How fast would you like your snake to grow?" << std::endl;
@@ -113,4 +107,19 @@ void Snake::askGrowingSpeed(){
   std::cout << "You have entered speed = " << mySpeed << ". Enjoy!"  << std::endl;
   Snake::growSpeed = mySpeed;
   return;
+}
+
+bool Snake::EatFood(SDL_Point& food){
+  bool ateFood = false;
+  int new_x = static_cast<int>(head_x);
+  int new_y = static_cast<int>(head_y);
+
+  if (food.x == new_x && food.y == new_y)
+  {
+    score++;
+    GrowBody();
+    ateFood = true;
+  }
+  return ateFood;
+
 }
