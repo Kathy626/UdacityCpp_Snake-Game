@@ -2,7 +2,7 @@
 #define SNAKEFOODS_H
 
 #include <vector>
-
+#include <string>
 class SnakeFoods
 {
 public:
@@ -38,20 +38,20 @@ private:
     int val_{0};
     std::string name_{"Default"};
     std::vector<int> color_ = {255, 255, 0}; // initial color as yellow
-}
+};
 
 /*good foods*/
 // dFood: default food will increase speed
 class DefFood : public SnakeFoods
 {
 public:
-    DefFood(int x, int y) : Foods(x, y, 1, "Default") {}
+    DefFood(int x, int y) : SnakeFoods(x, y, 1, "Default") {}
 };
 
 // SuperFood: super food will add a lot score (20), color lavender
 class SuperFood : public SnakeFoods
 {
 public:
-    SuperFood(int x, int y) : Foods(x, y, 20, "Superb", {230, 230, 250}) {}
+    SuperFood(int x, int y) : SnakeFoods(x, y, 20, "Superb", {230, 230, 250}) {}
 };
 #endif
