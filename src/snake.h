@@ -8,39 +8,36 @@ class Snake {
  public:
  // constructor & desctructor
   Snake();
-  Snake(const int& grid_width, const int& grid_height, int&& num);
+  Snake(int grid_width, int grid_height);
   ~Snake();
+   enum class Direction
+   {
+     kUp,
+     kDown,
+     kLeft,
+     kRight
+   };
+   Direction direction = Direction::kUp;
 
-  enum class Direction { kUp, kDown, kLeft, kRight };
-  Direction direction = Direction::kUp;
+   /* OOP 1.2: Update() and GrowBody() called in game.cpp, so move to public*/
+   void Update();
+   void GrowBody();
+   bool SnakeCell(const int &x, const int &y);
 
-  static std::vector<std::vector<bool>> grid;
-  virtual void Update(const Snake &other);
-
-  /* OOP 1.2: Update() and GrowBody() called in game.cpp, so move to public*/
-  void Update();
-  void GrowBody();
-  bool SnakeCell(const int &x, const int &y);
-
-  // new: get growing speed
-  float growSpeed{0.02f};
-  void askGrowingSpeed();
-
-  // new:
-  bool EatFood(SDL_Point& food);
-  int get_score() const { return score; }
+   // members
+   float speed{0.01f};    // initialized speed = 0.01
+   int size{1};
+   bool alive{true};
+   float head_x;
+   float head_y;
+   bool moved{false};
+   std::vector<SDL_Point> body;
+   int score{0};
+   // new: get growing speed
+   float growSpeed{0.02f};
+   void askGrowingSpeed();
 
  private:
-  // member
-  float speed{0.1f};
-  int size{1};
-  bool alive{true};
-  float head_x;
-  float head_y;
-  bool moved{false};
-  std::vector<SDL_Point> body;
-  int score{0};
-
   bool growing{false};
   int grid_width;
   int grid_height;

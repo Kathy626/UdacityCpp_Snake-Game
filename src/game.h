@@ -26,7 +26,7 @@ class Game {
   Snake snake;
   
   //SDL_Point food;
-  SnakeFoods f = DefFood(0,0);
+  SnakeFoods food = DefFood(0,0);
   
   std::random_device dev;
   std::mt19937 engine;

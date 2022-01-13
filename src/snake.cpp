@@ -1,20 +1,14 @@
 #include "snake.h"
 #include <cmath>
 #include <iostream>
-
 Snake::Snake() {}
 
-Snake::Snake(const int& grid_width, const int& grid_height, int&& num)
+Snake::Snake(int grid_width, int grid_height)
       : grid_width(grid_width),
         grid_height(grid_height),
-        head_x(grid_width),
-        head_y(grid_height * 0.75f)
-        {
-          if (num == 0)
-            head_x = grid_width * 0.25;
-          else
-            head_x = grid_width * 0.75;           
-        }
+        head_x(grid_width / 2),
+        head_y(grid_height / 2)
+        {}
 
 Snake::~Snake() {}
 
@@ -107,19 +101,4 @@ void Snake::askGrowingSpeed(){
   std::cout << "You have entered speed = " << mySpeed << ". Enjoy!"  << std::endl;
   Snake::growSpeed = mySpeed;
   return;
-}
-
-bool Snake::EatFood(SDL_Point& food){
-  bool ateFood = false;
-  int new_x = static_cast<int>(head_x);
-  int new_y = static_cast<int>(head_y);
-
-  if (food.x == new_x && food.y == new_y)
-  {
-    score++;
-    GrowBody();
-    ateFood = true;
-  }
-  return ateFood;
-
 }

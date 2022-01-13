@@ -67,9 +67,7 @@ void Game::PlaceFood()
 
     if (!snake.SnakeCell(x, y)) 
     {
-      food.x = x;
-      food.y = y;
-      return;
+      break;
     }
   }
     /* NEW */
@@ -89,7 +87,7 @@ void Game::PlaceFood()
         break;
     }
     // for testing
-    std::cout << "Food = " << food.GetName() << std::endl;
+    std::cout << "Food = " << food.getName() << std::endl;
 }
 
 void Game::Update()
@@ -103,9 +101,9 @@ void Game::Update()
   int new_y = static_cast<int>(snake.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y)
+  if (food.getX() == new_x && food.getY() == new_y)
   {
-    score += food.getVal; // change score based on food value
+    score += food.getVal(); // change score based on food value
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
