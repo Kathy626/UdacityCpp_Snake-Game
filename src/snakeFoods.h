@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 typedef std::vector<int> ints;
-
 class SnakeFoods
 {
 public:
