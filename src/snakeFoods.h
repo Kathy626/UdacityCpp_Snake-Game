@@ -47,7 +47,7 @@ public:
     DefFood(int x, int y) : SnakeFoods(x, y, 1, "Default") {}
 };
 
-// SuperFood: super food will add a lot score (20), color lavender
+// SuperFood: super food will add a lot score (20), color white
 class SuperFood : public SnakeFoods
 {
 public:
