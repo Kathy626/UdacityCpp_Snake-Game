@@ -4,6 +4,7 @@
 ## Code Criterion
 
 Please check on PlotExplain.png for what have been added and how they flow
+![plot](https://github.com/Kathy626/UdacityCpp_Snake-Game/blob/main/PlotExplain.png)
 
 1. Loops, Function and I&O
 
